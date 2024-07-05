@@ -4,8 +4,8 @@ export const environment = {
     autenticacion: true,
     notificaciones: false,
     menuApps: false,
-    appname: "cumplidos_proveedores",
-    appMenu: "CUMPLIDOS_PROVEEDORES_MF",
+    appname: "cumplidos",
+    appMenu: "cumplidos",
     TOKEN: {
       AUTORIZATION_URL: "https://autenticacion.portaloas.udistrital.edu.co/oauth2/authorize",
       CLIENTE_ID: "e36v1MPQk2jbz9KM4SmKhk8Cyw0a",
