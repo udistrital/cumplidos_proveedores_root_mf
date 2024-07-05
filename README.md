@@ -5,7 +5,6 @@ El Root contiene la lógica de Single-SPA del sistema de cumplidos proovedores y
 
 ## Especificaciones Técnicas
 ### Tecnologías Implementadas y Versiones
-* [Angular](https://angular.dev) 16.2.1
 * [Node](https://nodejs.org/en/) 16.14.0
 
 ### Variables de Entorno
@@ -17,7 +16,7 @@ export const environment = {
   notificaciones: [Booleano que indica si están habilitadas],
   menuApps: [Booleano que indica si está habilitado],
   appname: [Nombre del sistema para los estilos],
-  appMenu: [Nombre del sistema para los estilos],
+  appMenu: [Nombre del menu del sistema],
   TOKEN: {
     AUTORIZATION_URL: [URL de Autorización - login],
     CLIENTE_ID: [Token de acceso],
