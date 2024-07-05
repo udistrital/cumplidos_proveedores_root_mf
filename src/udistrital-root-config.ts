@@ -5,8 +5,17 @@ import {
   constructLayoutEngine,
 } from "single-spa-layout";
 import microfrontendLayout from "./microfrontend-layout.html";
+import { environment } from "./environments/environment";
+import "./assets/styles/index.css";
 
-const routes = constructRoutes(microfrontendLayout);
+const data = {
+  props: {
+    environment: environment,
+  },
+  loaders: {},
+};
+
+const routes = constructRoutes(microfrontendLayout, data);
 const applications = constructApplications({
   routes,
   loadApp({ name }) {
