@@ -17,7 +17,6 @@
     This CSP allows any SSL-enabled host and for arbitrary eval(), but you should limit these directives further to increase your app's security.
     Learn more about CSP policies at https://content-security-policy.com/#directive
   -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' 'unsafe-eval' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';">
   <meta name="importmap-type" content="systemjs-importmap" />
   <!-- If you wish to turn off import-map-overrides for specific environments (prod), uncomment the line below -->
   <!-- More info at https://github.com/joeldenning/import-map-overrides/blob/master/docs/configuration.md#domain-list -->
@@ -43,17 +42,33 @@
   <!-- Add your organization's prod import map URL to this script's src  -->
   <!-- <script type="systemjs-importmap" src="/importmap.json"></script> -->
 
-  <% if (isLocal) { %>
+  
   <script type="systemjs-importmap">
     {
       "imports": {
-        "@udistrital/root-config": "//localhost:4200/udistrital-root-config.js",
-        "@udistrital/core-mf": "//localhost:4201/main.js",
-        "@udistrital/proveedores1": "//localhost:4202/main.js"
+        <% if (isProd) { %>
+        <% const { environment } = require('./environments/environment.production.ts'); %>
+        <% const parcelsKeys = Object.keys(environment.parcels); %>
+        <% for (let i = 0; i < parcelsKeys.length; i++) { %>
+          "<%= parcelsKeys[i] %>": "<%= environment.parcels[parcelsKeys[i]] %>"<%= i < parcelsKeys.length - 1 ? ',' : '' %>
+        <% } %>
+      <% } else if (isDev) {%>
+        <% const { environment } = require('./environments/environment.development.ts'); %>
+        <% const parcelsKeys = Object.keys(environment.parcels); %>
+        <% for (let i = 0; i < parcelsKeys.length; i++) { %>
+          "<%= parcelsKeys[i] %>": "<%= environment.parcels[parcelsKeys[i]] %>"<%= i < parcelsKeys.length - 1 ? ',' : '' %>
+        <% } %>
+      <% } else {%>
+        <% const { environment } = require('./environments/environment.ts'); %>
+        <% const parcelsKeys = Object.keys(environment.parcels); %>
+        <% for (let i = 0; i < parcelsKeys.length; i++) { %>
+          "<%= parcelsKeys[i] %>": "<%= environment.parcels[parcelsKeys[i]] %>"<%= i < parcelsKeys.length - 1 ? ',' : '' %>
+        <% } %>
+      <% } %>
       }
     }
   </script>
-  <% } %>
+
 
   <!--
     If you need to support Angular applications, uncomment the script tag below to ensure only one instance of ZoneJS is loaded
