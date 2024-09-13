@@ -266,7 +266,7 @@ steps:
 - name: publish_s3_release
   image: plugins/s3
   settings:
-    bucket: cumplidos-proveedores-cliente-root
+    bucket: cumplidos-prov-cliente-root
     access_key:
       from_secret: aws_access_key_id
     secret_key:
