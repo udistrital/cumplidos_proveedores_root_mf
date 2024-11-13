@@ -1,4 +1,5 @@
 const { merge } = require("webpack-merge");
+const { environment } = require("./src/environments/environment");
 const singleSpaDefaults = require("webpack-config-single-spa-ts");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -13,7 +14,16 @@ module.exports = (webpackConfigEnv, argv) => {
   });
 
   return merge(defaultConfig, {
-    // modify the webpack config however you'd like to by adding to this object
+    devServer: {
+      static: "./dist",
+      proxy: {
+        "/assets/i18n": {
+          target:"http://localhost:4202",
+          pathRewrite: { "^/assets/i18n": "/assets/i18n" },
+          secure: true,
+        },
+      },
+    },
     plugins: [
       new HtmlWebpackPlugin({
         inject: false,
