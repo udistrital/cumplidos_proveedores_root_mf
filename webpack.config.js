@@ -1,5 +1,4 @@
 const { merge } = require("webpack-merge");
-const { environment } = require("./src/environments/environment");
 const singleSpaDefaults = require("webpack-config-single-spa-ts");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
