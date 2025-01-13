@@ -58,7 +58,8 @@ steps:
 #     - unitest
 
 - name: run_sonar_scanner
-  image: sonarsource/sonar-scanner-cli@sha256:0b90dedf01ef875d69a5a151f73d72b8288a319b39cdfd2ee32a729027a00785
+  image: sonarsource/sonar-scanner-cli:latest
+  pull: always
   environment:
     SONAR_HOST_URL:
       from_secret: SONAR_HOST
