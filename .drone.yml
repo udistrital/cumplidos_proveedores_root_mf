@@ -68,7 +68,7 @@ steps:
     - sonar-scanner \
         -Dsonar.host.url=$SONAR_HOST_URL \
         -Dsonar.login=$SONAR_TOKEN \
-        -Dsonar.projectKey=my_project_key \
+        -Dsonar.projectKey=Prueba \
         -Dsonar.sources=. \
         -Dsonar.exclusions=**/node_modules/**,**/*.spec.ts,documentation/**
   when:
