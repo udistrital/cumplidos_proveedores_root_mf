@@ -66,11 +66,9 @@ steps:
       from_secret: SONAR_TOKEN
   commands:
     - sonar-scanner \
-        -Dsonar.host.url=$SONAR_HOST_URL \
-        -Dsonar.login=$SONAR_TOKEN \
-        -Dsonar.projectKey=Prueba \
-        -Dsonar.sources=. \
-        -Dsonar.exclusions=**/node_modules/**,**/*.spec.ts,documentation/**
+        -e SONAR_HOST_URL=$SONAR_HOST_URL \
+        -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=Prueba" \
+        -e SONAR_LOGIN=$SONAR_TOKEN
   when:
     branch:
     - develop
