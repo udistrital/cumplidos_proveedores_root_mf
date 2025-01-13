@@ -65,7 +65,7 @@ steps:
     SONAR_TOKEN:
       from_secret: SONAR_TOKEN
   commands:
-    - sonar-scanner
+    - sonar-scanner -Dsonar.projectKey=Prueba
   when:
     branch:
     - develop
