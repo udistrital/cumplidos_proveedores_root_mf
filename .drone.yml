@@ -60,6 +60,7 @@ steps:
 - name: run_sonar_scanner
   image: sonarsource/sonar-scanner-cli:latest
   pull: always
+  debug: true
   environment:
     SONAR_HOST_URL:
       from_secret: SONAR_HOST
