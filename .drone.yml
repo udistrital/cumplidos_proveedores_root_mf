@@ -58,7 +58,7 @@ steps:
 #     - unitest
 
 - name: run_sonar_scanner
-  image: sonarsource/sonar-scanner-cli:4.7-java17
+  image: sonarsource/sonar-scanner-cli:latest
   environment:
     SONAR_HOST_URL:
       from_secret: SONAR_HOST
