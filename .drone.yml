@@ -64,14 +64,13 @@ steps:
       from_secret: SONAR_HOST
     SONAR_TOKEN:
       from_secret: SONAR_TOKEN
-    exclusions: "**/node_modules/**,**/*.spec.ts,documentation/**"
   commands:
     - sonar-scanner \
         -Dsonar.host.url=$SONAR_HOST_URL \
         -Dsonar.login=$SONAR_TOKEN \
         -Dsonar.projectKey=my_project_key \
         -Dsonar.sources=. \
-        -Dsonar.exclusions=$exclusions  
+        -Dsonar.exclusions=**/node_modules/**,**/*.spec.ts,documentation/**
   when:
     branch:
     - develop
