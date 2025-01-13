@@ -58,13 +58,20 @@ steps:
 #     - unitest
 
 - name: run_sonar_scanner
-  image: sonarsource/sonar-scanner-cli:latest
+  image: sonarsource/sonar-scanner-cli:4.7-java17
   environment:
     SONAR_HOST_URL:
       from_secret: SONAR_HOST
     SONAR_TOKEN:
       from_secret: SONAR_TOKEN
     exclusions: "**/node_modules/**,**/*.spec.ts,documentation/**"
+  commands:
+    - sonar-scanner \
+        -Dsonar.host.url=$SONAR_HOST_URL \
+        -Dsonar.login=$SONAR_TOKEN \
+        -Dsonar.projectKey=my_project_key \
+        -Dsonar.sources=. \
+        -Dsonar.exclusions=$exclusions  
   when:
     branch:
     - develop
