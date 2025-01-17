@@ -120,7 +120,7 @@ steps:
 - name: publish_s3_master
   image: plugins/s3
   settings:
-    bucket: cumplidos-prov-cliente-root
+    bucket: cumplidos-prov-cliente-root-prod
     access_key:
       from_secret: aws_access_key_id
     secret_key:
